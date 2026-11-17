@@ -1,0 +1,33 @@
+{
+  "name": "medical-ledger",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "frontend",
+    "contracts"
+  ],
+  "scripts": {
+    "test": "npm run test -w backend && npm run test -w contracts",
+    "build": "npm run build -w frontend",
+    "dev": "npm run dev -w frontend",
+    "test:integration": "node scripts/test-integration.mjs",
+    "test:ui": "playwright test",
+    "test:backup": "node scripts/test-backup.mjs && node scripts/test-cassandra.mjs",
+    "format": "prettier --write backend/src frontend/src contracts scripts docs *.json *.ts *.yml",
+    "test:upgrade:ui": "playwright test --config playwright.upgrade.config.ts",
+    "deploy:sepolia": "npm run compile -w contracts && node scripts/deploy-sepolia.mjs",
+    "bootstrap:admin": "node scripts/bootstrap-admin.mjs",
+    "test:products": "node scripts/test-products.mjs",
+    "test:products:ui": "playwright test --config playwright.products.config.ts",
+    "test:accounts": "node scripts/test-accounts.mjs",
+    "test:accounts:ui": "playwright test --config playwright.accounts.config.ts",
+    "test:image-lab": "node scripts/test-image-lab.mjs",
+    "test:image-lab:ui": "playwright test --config playwright.image-lab.config.ts",
+    "test:product-search:ui": "playwright test --config playwright.product-search.config.ts",
+    "test:packages:ui": "playwright test --config playwright.packages.config.ts"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.65.0",
+    "prettier": "^3.9.10"
+  }
+}
