@@ -1,0 +1,13 @@
+.git
+**/node_modules
+.env
+.venv
+backups
+**/__pycache__
+**/dist
+**/cache
+**/artifacts
+docs/source
+
+.env.*
+deployment-sepolia*.json
